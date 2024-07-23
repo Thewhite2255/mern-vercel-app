@@ -11,8 +11,10 @@ const PORT = process.env.PORT || 5000
 
 app.use(helmet())
 
-app.get('/', (req, res) => {
-  res.send('Server running')
+app.get('/api/hello/', (req, res) => {
+  res.json({
+    message: 'Hello World',
+  })
 })
 
 app.listen(PORT, () => {
