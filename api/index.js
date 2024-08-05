@@ -18,23 +18,16 @@ app.use(helmet())
 
 app.use('/api/auth', require('./routes/authRoutes'))
 
-if (process.env.NODE_ENV === 'production') {
-  const _dirname = path.resolve()
-  app.use(express.static(path.join(_dirname, 'client/dist')))
-
-  app.get('*', (req, res) => {
-    res.sendFile(path.resolve(_dirname, 'frontend', 'dist', 'index.html'))
+app.get('/api', (req, res) => {
+  res.json({
+    message: 'Server is ready',
   })
-} else {
-  app.get('/api', (req, res) => {
-    res.send('Server is ready')
+})
+app.get('/api/hello/', (req, res) => {
+  res.json({
+    message: 'Hello World',
   })
-  app.get('/api/hello/', (req, res) => {
-    res.json({
-      message: 'Hello World',
-    })
-  })
-}
+})
 
 app.use(errorMiddleware)
 
