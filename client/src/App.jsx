@@ -4,7 +4,7 @@ function App() {
       <div className="flex gap-4 rounded-lg bg-white p-8 shadow-md max-md:flex-col">
         <div className="w-1/4">
           <img
-            src="/img1.png"
+            src="/images/avatar.png"
             className="h-24 rounded-full object-cover p-1 ring-2 ring-blue-500"
           />
         </div>
