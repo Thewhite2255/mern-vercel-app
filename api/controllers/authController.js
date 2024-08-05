@@ -134,14 +134,12 @@ const googleOauth = async (req, res) => {
     let user = await User.findOne({ email: userInfo.email })
 
     if (!user) {
-      user = new User({
+      user = await User.create({
         email: userInfo.email,
         username: userInfo.name,
         picture: userInfo.picture,
         googleId: userInfo.sub,
       })
-
-      await user.save()
     }
 
     generateAccessToken(res, user)

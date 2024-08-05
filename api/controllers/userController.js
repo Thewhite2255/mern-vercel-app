@@ -121,8 +121,11 @@ const promoteUser = async (req, res, next) => {
     if (!user) {
       return next(errorHandler(404, 'User not found'))
     }
+
     user.role = 'admin'
+
     await user.save()
+
     res.status(200).json({
       success: true,
       user: user,
